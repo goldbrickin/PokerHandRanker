@@ -1,0 +1,25 @@
+@model Hand
+
+@{
+    ViewData["Title"] = "Your Hand";
+}
+
+<div class="text-center">
+    <h2>You have:</h2>
+    @foreach(var card in Model.cards)
+    {
+        <div>@card.ToString(), </div>
+    }
+    <h2>which makes:</h2>
+    <p>
+        <div class="@(Model.Rank() == "Straight flush" ? "blue" : "red")">Straight flush</div>
+        <div class="@(Model.Rank() == "Four of a kind" ? "blue" : "red")">Four of a kind</div>               
+        <div class="@(Model.Rank() == "Full house" ? "blue" : "red")">Full house</div>
+        <div class="@(Model.Rank() == "Flush" ? "blue" : "red")">Flush</div>
+        <div class="@(Model.Rank() == "Straight" ? "blue" : "red")">Straight</div>
+        <div class="@(Model.Rank() == "Three of a kind" ? "blue" : "red")">Three of a kind</div>
+        <div class="@(Model.Rank() == "Two pair" ? "blue" : "red")">Two pair</div>
+        <div class="@(Model.Rank() == "One pair" ? "blue" : "red")">One pair</div>
+        <div class="@(Model.Rank() == "High Card" ? "blue" : "red")">High Card</div>
+    </p>
+</p>

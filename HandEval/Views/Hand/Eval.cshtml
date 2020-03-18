@@ -1,0 +1,26 @@
+@model EvalViewModel
+
+@{
+    ViewData["Title"] = "Poker Hand Ranker";
+}
+
+@using ( Html.BeginForm("SubmitHand", "Hand") )
+{
+<div class="text-center">
+    <h1 class="display-4">Pick your cards:</h1>
+    @for(int i = 1; i < 6; i++)
+    {
+        string name = "card" + i;
+    <p>
+        <label>Card @i:</label>
+        <select type="select" name="@name">
+            @foreach (var card in Model.deck.cards)
+            {
+                <option value="@card.ToShortHand()">@card.ToString()</option>
+            }
+        </select>
+    </p>
+    }
+    <input type="submit" value="What do I have?">
+</div>
+}
